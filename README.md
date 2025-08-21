@@ -1,10 +1,10 @@
-## Avalonia-ls
+## LS for Avalonia
  Simple standalone Language Server for Avalonia XAML files suitable to lightweight editors like neovim and helix with support for completions and xaml formatting via xaml styler
 
 # Installation
 To install from source, dotnet-sdk-9.0 and just must be installed. Clone recursively and run just install recipe( .local/bin must be in your path)
 ```
-git clone https://www.github.com/eugenenoble2005/avalonia-ls.git --recursive
+git clone https://www.github.com/eugenenoble2005/ls-for-avalonia.git --recursive
 cd avalonia-ls
 just install
 ```
@@ -71,3 +71,5 @@ avalonia-preview --file path/to/axaml/file --target terminal
 
 https://github.com/user-attachments/assets/32c9a183-2e48-44e5-8569-ca0da96d2f65
 
+# Disclaimer
+This project is not associated or endorsed by the developers of Avalonia.
