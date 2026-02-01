@@ -85,7 +85,7 @@ vim.filetype.add({
 
 ## Instructions
 For completions to work on an avalonia project, you must generate metadata and build. If you install with just, an avalonia-solution-parser executable will be installed
-```
+```bash
 cd my-avalonia-project
 # you should run the following generally in the directory with your .csproj or .fsproj files
 avalonia-solution-parser .
@@ -95,11 +95,11 @@ You need to run `avalonia-solution-parser` to generate metadata just once. Compl
 
 ### Previewer
 You can run a xaml previewer in a browser tab for any xaml file in your project:
-```
+```bash
 avalonia-preview --file path/to/axaml/file
 ```
 On supported terminal emulators like kitty, ghostty or wezterm, you can run the previewer directly inside the terminal. This is experimental and does not yet capture input like mouse and keyboard.
-```
+```bash
 avalonia-preview --file path/to/axaml/file --target terminal
 ```
 
