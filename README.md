@@ -1,22 +1,56 @@
-## LS for Avalonia
+# LS for Avalonia
  Simple standalone Language Server for Avalonia XAML files suitable to lightweight editors like neovim and helix with support for completions and xaml formatting via xaml styler
 
-# Installation
-To install from source, dotnet-sdk-9.0 and just must be installed. Clone recursively and run just install recipe( .local/bin must be in your path)
-```
+- [Installation](#installation)
+  - [Build from Source](#build-from-source)
+  - [Achlinux AUR](#archlinux-aur)
+- [LSP Configuration](#lsp-configuration)
+  - [Helix](#helix)
+  - [Neovim](#neovim)
+- [Instructions](#instructions)
+  - [Previewer](#previewer)
+- [Disclaimer](#disclaimer)
+
+## Installation
+
+### Build from Source
+
+Prerequisites:
+1. [.NET SDK 9.0][dotnet-sdk-9]
+2. [just][just]
+
+Works on:
+- Linux
+- Windows
+
+Clone recursively and run `just install` recipe( `.local/bin` must be in your path)
+```bash
 git clone https://www.github.com/eugenenoble2005/ls-for-avalonia.git --recursive
 cd avalonia-ls
 just install
 ```
 
-You can also install from the AUR
-```
+
+> On Windows:  
+> Add `%LocalAppData%/avalonia-ls` to `PATH` environment variable e.g.
+> ```powershell
+> $env:Path += ";C:\Users\usrname\AppData\Local\avalonia-ls"
+> ```
+
+### Archlinux AUR
+
+```bash
 yay -S avalonia-ls-git
 ```
 
-After installing, you need only configure your editor of choice:
-# Helix
-```
+## LSP Configuration
+
+### Helix
+
+```toml
+[language-server.avalonials]
+command = "avalonia-ls"
+
 [[language]]
 name="xml"
 scope="source.axaml"
@@ -28,8 +62,9 @@ auto-format=false
 formatter={command="xaml-styler",args=["--write-to-stdout" ,"--take-pipe"]}
 ```
 
-# Neovim
-```
+### Neovim
+
+```lua
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
 	pattern = { "*.axaml" },
 	callback = function(event)
@@ -48,7 +83,7 @@ vim.filetype.add({
 
 ```
 
-# Instructions
+## Instructions
 For completions to work on an avalonia project, you must generate metadata and build. If you install with just, an avalonia-solution-parser executable will be installed
 ```
 cd my-avalonia-project
@@ -56,9 +91,9 @@ cd my-avalonia-project
 avalonia-solution-parser .
 dotnet build
 ```
-You need to run avalonia-solution-parser to generate metadata just once. Completions should work afterwards
+You need to run `avalonia-solution-parser` to generate metadata just once. Completions should work afterwards
 
-# PREVIEWER
+### Previewer
 You can run a xaml previewer in a browser tab for any xaml file in your project:
 ```
 avalonia-preview --file path/to/axaml/file
@@ -71,5 +106,8 @@ avalonia-preview --file path/to/axaml/file --target terminal
 
 https://github.com/user-attachments/assets/32c9a183-2e48-44e5-8569-ca0da96d2f65
 
-# Disclaimer
+## Disclaimer
 This project is not associated or endorsed by the developers of Avalonia.
+
+[dotnet-sdk-9]:https://dotnet.microsoft.com/en-us/download/dotnet/9.0
+[just]:https://github.com/casey/just
