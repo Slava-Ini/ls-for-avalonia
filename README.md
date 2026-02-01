@@ -26,7 +26,7 @@ Works on:
 Clone recursively and run `just install` recipe( `.local/bin` must be in your path)
 ```bash
 git clone https://www.github.com/eugenenoble2005/ls-for-avalonia.git --recursive
-cd avalonia-ls
+cd ls-for-avalonia
 just install
 ```
 
